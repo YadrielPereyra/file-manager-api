@@ -55,6 +55,12 @@ Delete a file
 python cli.py delete --file example.txt
 Note: Make sure the API is running before using the CLI tool.
 
+Build Docker image
+docker build -t file-manager-api .
+
+Run Docker container
+docker run -p 5000:5000 file-manager-api
+
 Deployment Suggestions
 	•	Deploy on Render.com using the Docker image.
 	•	Or deploy on AWS EC2, DigitalOcean, or Heroku.
