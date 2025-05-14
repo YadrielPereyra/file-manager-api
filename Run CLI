@@ -1,0 +1,4 @@
+python cli.py upload --file example.txt
+python cli.py list
+python cli.py download --file example.txt
+python cli.py delete --file example.txt
