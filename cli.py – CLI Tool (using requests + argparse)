@@ -1,0 +1,32 @@
+import requests
+import argparse
+
+API_URL = 'http://localhost:5000'  # Update with your deployed URL later
+
+parser = argparse.ArgumentParser(description='File Manager CLI')
+parser.add_argument('action', choices=['upload', 'list', 'download', 'delete'], help='Action to perform')
+parser.add_argument('--file', help='File path or filename for upload/download/delete')
+
+args = parser.parse_args()
+
+if args.action == 'upload':
+    with open(args.file, 'rb') as f:
+        response = requests.post(f'{API_URL}/upload', files={'file': f})
+        print(response.json())
+
+elif args.action == 'list':
+    response = requests.get(f'{API_URL}/files')
+    print(response.json())
+
+elif args.action == 'download':
+    r = requests.get(f'{API_URL}/download/{args.file}', stream=True)
+    if r.status_code == 200:
+        with open(args.file, 'wb') as f:
+            f.write(r.content)
+        print(f'{args.file} downloaded.')
+    else:
+        print(r.json())
+
+elif args.action == 'delete':
+    response = requests.delete(f'{API_URL}/delete/{args.file}')
+    print(response.json())
