@@ -33,3 +33,8 @@ This project simulates an enterprise-grade internal tool, showcasing API develop
 ```bash
 git clone https://github.com/YadrielPereyra/file-manager-api.git
 cd file-manager-api
+ ## Author
+- [Yadriel Pereyra](https://github.com/YadrielPereyra)
+
+## License
+This project is open source under the MIT license.
